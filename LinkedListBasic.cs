@@ -8,7 +8,8 @@ public class Program
 		l.AddNodeAtStart(2);
 		l.AddNodeAtStart(3);
 		l.AddNodeAtStart(4);
-		l.PrintLinkedList();
+        Node node = l.ReverseLinkedLIst();
+		l.PrintLinkedList(node);
 	}
 }
 
@@ -20,7 +21,7 @@ public class Node {
 public class LinkedList{
 public Node head;
 
-public void PrintLinkedList() {
+public void PrintLinkedList(Node head = null) {
     Node current = head;
     while(current.next != null) {
         Console.WriteLine(current.data);
@@ -62,7 +63,20 @@ newNode.next = prevNode.next;
 prevNode.next = newNode;
 }
 
+public Node ReverseLinkedLIst() {
+    Node curr = head;
+    Node prev = null;
+    Node temp = null;
 
+    while (curr != null) {
+        temp = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = temp;
+    }
+
+    return prev;
+}
 
 }
 
